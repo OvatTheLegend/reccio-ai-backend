@@ -39,7 +39,7 @@ class CategorizeItemsRequest(BaseModel):
 def root():
     return {
         "success": True,
-        "message": "AI backend beži"
+        "message": "AI backend bezi"
     }
 
 
