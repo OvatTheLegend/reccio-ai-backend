@@ -102,7 +102,7 @@ def parse_receipt_text(data: ParseReceiptTextRequest):
                 "content": prompt
                 }
             ],
-            max_tokens=1000,
+            max_tokens=2500,
         )
 
         ai_result = response.choices[0].message.content.strip()
