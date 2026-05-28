@@ -55,7 +55,13 @@ def parse_receipt_text(data: ParseReceiptTextRequest):
         }
     
     prompt = f"""
-    Toto je pokladničný blok. Extrahuj z neho tieto údaje a vráť ONLY JSON bez akéhokoľvek iného textu:
+    Toto je pokladničný blok.
+    Ak vstup neobsahuje pokladničný blok alebo z neho nevieš spoľahlivo určiť obchod, dátum, celkovú sumu a položky nákupu, nevymýšľaj údaje a vráť ONLY tento JSON:
+    {{
+        "success": false,
+        "message": "Daný súbor neobsahuje údaje o pokladničnom bloku."
+    }}
+    Extrahuj z neho tieto údaje a vráť ONLY JSON bez akéhokoľvek iného textu:
     {{
         "shop_name": "názov obchodu",
         "date": "DD.MM.YYYY",
@@ -133,7 +139,13 @@ def parse_receipt_image(data: ParseReceiptImageRequest):
         }
 
     prompt = f"""
-    Toto je pokladničný blok. Extrahuj z neho tieto údaje a vráť ONLY JSON bez akéhokoľvek iného textu:
+    Toto je pokladničný blok.
+    Ak vstup neobsahuje pokladničný blok alebo z neho nevieš spoľahlivo určiť obchod, dátum, celkovú sumu a položky nákupu, nevymýšľaj údaje a vráť ONLY tento JSON:
+    {{
+        "success": false,
+        "message": "Daný súbor neobsahuje údaje o pokladničnom bloku."
+    }}
+    Extrahuj z neho tieto údaje a vráť ONLY JSON bez akéhokoľvek iného textu:
     {{
         "shop_name": "názov obchodu",
         "date": "DD.MM.YYYY",
