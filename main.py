@@ -117,6 +117,13 @@ def parse_receipt_text(data: ParseReceiptTextRequest):
         ai_result = ai_result.replace("```json", "").replace("```", "").strip()
 
         data = json.loads(ai_result)
+        if data.get("success") is False:
+            return {
+                "success": False,
+                "error": "not_receipt",
+                "message": data.get("message", "Daný súbor neobsahuje údaje o pokladničnom bloku.")
+            }
+        
         return {"success": True, "data": data}
 
     except json.JSONDecodeError as e:
@@ -216,6 +223,13 @@ def parse_receipt_image(data: ParseReceiptImageRequest):
             ai_result = ai_result[start:end+1]
 
         data = json.loads(ai_result)
+        if data.get("success") is False:
+            return {
+                "success": False,
+                "error": "not_receipt",
+                "message": data.get("message", "Daný súbor neobsahuje údaje o pokladničnom bloku.")
+            }
+        
         return {"success": True, "data": data}
 
     except json.JSONDecodeError as e:
